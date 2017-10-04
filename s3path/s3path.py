@@ -72,6 +72,7 @@ class S3Path(ChrisApp):
         filtered_uids = [
             series for series in data['data'] if str(series['uid']['value']) in uids_set]
 
+        print(filtered_uids)
         print('Done.')
 
 # ENTRYPOINT
