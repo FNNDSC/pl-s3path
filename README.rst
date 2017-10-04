@@ -24,9 +24,9 @@ Using ``docker run``
 
 .. code-block:: bash
 
-  docker run -t--rm
+  docker run -t --rm
     -v $(pwd)/../pl-pacsquery/out:/input \
     -v $(pwd)/output:/output             \
-    fnndsc/pl-s3path s3path.py
-    --seriesUIDS 0
+    fnndsc/pl-s3path s3path.py           \ 
+    --seriesUIDS 0                       \
     /input /output
