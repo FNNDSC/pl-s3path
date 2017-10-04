@@ -9,7 +9,7 @@ pl-s3path
 Abstract
 ========
 
-A CUBE 'ds' plugin to <>.
+A CUBE 'ds' plugin to adapt pl-pacsquery output to pl-s3retrieve input'.
 
 Preconditions
 =============
