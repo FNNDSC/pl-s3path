@@ -1,5 +1,5 @@
 #                                                            _
-# Pacs query app
+# S3 Path ds app
 #
 # (c) 2016 Fetal-Neonatal Neuroimaging & Developmental Science Center
 #                   Boston Children's Hospital
@@ -21,8 +21,8 @@ from chrisapp.base import ChrisApp
 
 class S3Path(ChrisApp):
     '''
-    Create file out.txt witht the directory listing of the directory
-    given by the --dir argument.
+    Compute the path of a DICOM series stored in Amazon S3 and save it to the output meta
+    JSON file with the key 's3path'
     '''
     AUTHORS = 'FNNDSC (dev@babyMRI.org)'
     SELFPATH = os.path.dirname(__file__)
@@ -36,8 +36,15 @@ class S3Path(ChrisApp):
     LICENSE = 'Opensource (MIT)'
     VERSION = '0.1'
 
+    # Fill out this with key-value output descriptive info (such as an output file path
+    # relative to the output dir) that you want to save to the output meta file when
+    # called with the --saveoutputmeta flag
+    OUTPUT_META_DICT = {}
+
     def define_parameters(self):
-        """ Define parameters """
+        """
+        Define the code to be run by this plugin app.
+        """
         self.add_argument(
             '--seriesFile',
             dest='series_file',
@@ -55,7 +62,9 @@ class S3Path(ChrisApp):
             help='Series UIDs to be retrieved')
 
     def run(self, options):
-        """ Run plugin """
+        """
+        Define the code to be run by this plugin app.
+        """
         # create dummy series file with all series
         series_file = os.path.join(options.inputdir, 'success.txt')
         if options.series_file != '':
