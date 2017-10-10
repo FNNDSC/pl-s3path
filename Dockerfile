@@ -1,4 +1,4 @@
-# Docker file for the pacsretrieve
+# Docker file for the s3path
 
 FROM fnndsc/ubuntu-python3:latest
 MAINTAINER fnndsc "dev@babymri.org"
