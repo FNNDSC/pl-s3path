@@ -43,7 +43,7 @@ class S3Path(ChrisApp):
 
     def define_parameters(self):
         """
-        Define the code to be run by this plugin app.
+        Define the CLI arguments accepted by this plugin app.
         """
         self.add_argument(
             '--seriesFile',
