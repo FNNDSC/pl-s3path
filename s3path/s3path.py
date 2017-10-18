@@ -48,7 +48,7 @@ class S3Path(ChrisApp):
         self.add_argument(
             '--seriesFile',
             dest='series_file',
-            type=str,
+            type=ChrisApp.path,
             default='',
             optional=True,
             help='Location of the file containing the series description.')
