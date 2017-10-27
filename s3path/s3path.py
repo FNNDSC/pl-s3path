@@ -133,6 +133,9 @@ class S3Path(ChrisApp):
         # compute patient age in days from patient age
         if not study_date_valid:
             try:
+                # will just make it the dumb/fast way
+                # 17M = 17* 364.25 / 12 days
+                # 2Y = 2 * 364.25 days
                 patient_age_reference = patient_age[-1].lower()
                 patient_age_value = patient_age[-3:-1]
                 age_datetime = datetime.datetime.strptime(patient_age_value, '%' + patient_age_reference)
