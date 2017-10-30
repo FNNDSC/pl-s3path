@@ -13,9 +13,6 @@
 import datetime
 import json
 import os
-import time
-import shutil
-import subprocess
 
 # import the Chris app superclass
 from chrisapp.base import ChrisApp
@@ -40,7 +37,7 @@ class S3Path(ChrisApp):
     # Fill out this with key-value output descriptive info (such as an output file path
     # relative to the output dir) that you want to save to the output meta file when
     # called with the --saveoutputmeta flag
-    OUTPUT_META_DICT = {}
+    OUTPUT_META_DICT = {'prefix': ''}
 
     def define_parameters(self):
         """
@@ -53,6 +50,10 @@ class S3Path(ChrisApp):
             default=',',
             optional=True,
             help='Series UIDs to be retrieved')
+
+        self.add_argument('--prefix', dest='prefix', type=str, optional=False,
+                          help='prefix string for the cloud objects')
+
 
     def generateBucket(self, age):
         ageList = [
@@ -187,6 +188,11 @@ class S3Path(ChrisApp):
 
         patient_bucket = self.generateBucket(patient_age_in_days)
         print(patient_bucket)
+
+        cloud_path = os.path.join(options.prefix, patient_bucket)
+        # add cloud path to output.meta.json
+        self.OUTPUT_META_DICT['prefix'] = cloud_path
+        print(cloud_path)
         print('Done.')
 
 # ENTRYPOINT
