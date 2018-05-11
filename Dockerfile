@@ -12,4 +12,4 @@ WORKDIR $APPROOT
 RUN apt-get update -y\
   && pip install -r requirements.txt
 
-CMD ["s3path.py", "--json"]
+CMD ["s3path.py", "--help"]
